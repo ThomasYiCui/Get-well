@@ -1,8 +1,8 @@
 # Test-2
-<script>
+<style>
   body {
     background-color: rgb(250, 250, 250);
   }
-</script>
+</style>
 Hello
 <body><h1>Hello</h1></body>
