@@ -13,11 +13,11 @@
             }
         </style>
         <script>
-            Hello
+            
         </script>
     </head>
     <body>
-        
+        Hello lets see if this thing works boi
 
     </body>
 </html>
