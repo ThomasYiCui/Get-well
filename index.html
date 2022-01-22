@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <style>
-        body {
-            background-color: rgb(212, 230, 209);
-            font-family: arial;
-        }
-        .center {
-            text-align: center;
-        }
-    </style>
-    <body>
-        <h1>Get Well</h1>
-        <p>Lol</p>
-    </body>
+	<head>
+        	<meta charset="utf-8">
+        	<title>New webpage</title>
+		<style>
+			body {
+				background-color: rgb(250, 250, 250);
+				font-family: arial;
+			}
+			.center {
+				text-align: CENTER;
+			}
+			.button {
+				border: none;
+				color: white;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				border-radius: 5%;
+				margin-left: 40%;
+				width: 20%;
+				height: 10%;
+			}
+			.green {
+				background-color: rgb(0, 200, 0);
+			}
+		</style>
+    	</head>
+    	<body>
+		<h1 class = "center">Get Well</h1>
+		<p class = "center">Points: <span id = "wellness">0</span></p>
+		<p class = "center">(Get to 100)</p>
+		<button class = "button green" onclick = "increment()">Get Point</button>
+		<script>
+			var well = 0;
+			var cps = 1
+			function increment(){
+				well+=1;
+				document.getElementById("wellness").innerHTML = well
+				if(well >= 100){
+					document.body.innerHTML = "Yay you got to 100, WOOOOOO part 2 coming up";
+				}
+			}	
+		</script>
+    	</body>
 </html>
