@@ -66,6 +66,9 @@
 			function update(){
 				well+=pps/1000
 				document.getElementById("wellness").innerHTML = Math.round(well)
+				if(well > 10000){
+					document.body.innerHTML = "Part 3 Coming Up LOL"
+				}
 			}
 			function addPPS(add, i){
 				if(well >= costs[i]){
