@@ -18,13 +18,29 @@
 				text-decoration: none;
 				display: inline-block;
 				font-size: 16px;
-				border-radius: 5%;
+				border: 1px solid green;
 				margin-left: 40%;
 				width: 20%;
 				height: 10%;
+				position: absolute;
+			}
+			.ppsButton{
+				border: none;
+				color: white;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				border: 1px solid green;
+				margin-left: 5%;
+				width: 15%;
+				display: block;
 			}
 			.green {
 				background-color: rgb(0, 200, 0);
+			}
+			.red {
+				background-color: rgb(200, 0, 0);
 			}
 		</style>
     	</head>
@@ -33,16 +49,33 @@
 		<p class = "center">Points: <span id = "wellness">0</span></p>
 		<p class = "center">(Get to 100)</p>
 		<button class = "button green" onclick = "increment()">Get Point</button>
+		<button class = "ppsButton green" onclick = "addPPS(1, 0)">Point Adder (<span id = "0">10</span>:1)</button>
+		<button class = "ppsButton green" onclick = "addPPS(15, 1)">Point Clicker (<span id = "1">100</span>: 15)</button>
+		<button class = "ppsButton green" onclick = "addPPS(100, 2)">Point Forger (<span id = "2">500</span> : 100)</button>
+		<button class = "ppsButton green" onclick = "addPPS(200, 3)">Point Farm (<span id = "3">1000</span>: 200)</button>
+		<button class = "ppsButton green" onclick = "addPPS(1200, 4)">Point Mine (<span id = "4">5000</span>: 1200)</button>
 		<script>
+			setInterval(update, 1)
+			costs = [10, 100, 500, 1000, 5000]
 			var well = 0;
-			var cps = 1
+			var pps = 0
+			var ppc = 1
 			function increment(){
-				well+=1;
-				document.getElementById("wellness").innerHTML = well
-				if(well >= 100){
-					document.body.innerHTML = "Yay you got to 100, WOOOOOO part 2 coming up";
+				well+=ppc
+			}
+			function update(){
+				well+=pps/1000
+				document.getElementById("wellness").innerHTML = Math.round(well)
+			}
+			function addPPS(add, i){
+				if(well >= costs[i]){
+					well-=costs[i]
+					pps+=add
+					costs[i]*=1.5
+					costs[i] = Math.round(costs[i])
+					document.getElementById(i).innerHTML = costs[i]
 				}
-			}	
+			}
 		</script>
     	</body>
 </html>
