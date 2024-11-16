@@ -3,50 +3,46 @@
 <html>
 	<head>
         	<meta charset="utf-8">
-        	<title>BBT Cup</title>
-		<style>
-			body {
-				background-color: rgb(234, 247, 237);
-				text-align: CENTER;
-				font-family: arial;
-			}
-			.button {
-				background-color: #4CAF50; /* Green */
-				margin-top: 5%;
-  				border: none;
-  				color: white;
-  				padding: 15px 32px;
-			        text-align: center;
-  				text-decoration: none;
-  				display: inline-block;
-  				font-size: 16px;
-			}
-		</style>
+        	<title>Thomas's Pattern Generator</title>
     	</head>
     	<body>
-		<img src = "file:///C:/Users/thoma/Downloads/IMG-1878%20(1).jpg">
-		<h1>BBT Cup 2022 MATTBC</h1>
-		<button onclick = "Gen()" class = "button">Genarate Number for 8 teams</button>
-		<p><span id = "Number">Number Not Yet Genarted</span></p>
+		<p id="genned">Numbers Generated: 1</p>
+		<p id="result">Number 1: 1</p>
 		<script>
-			var numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-			number = 0;
-			function randomWithRange(min, max){
-				range = (max - min) + 1;     
-				return (Math.random() * range) + min;
+let t = [1];
+let out = [];
+let loop = setInterval(function() {
+	let calcsDone = 0;
+    for(let i = 0; i < 20; i++) {
+        out = [];
+        let numOn;
+        let nums = 0;
+        numOn = undefined;
+        for(let j = 0; j < t.length; j++) {
+			calcsDone+=1;
+            if(!numOn) {
+                numOn = t[j];
+            }
+            if(numOn !== t[j]) {
+                out.push(nums);
+                out.push(numOn);
+                numOn = t[j];
+                nums = 1;
+            } else {
+                nums+=1;
+            }
+			if(calcsDone >= 1000) {
+				return;
 			}
-			function Gen(){
-				for(var i = 0; i < 8; i++){
-					var use = Math.floor(randomWithRange(0, numbers.length - 1));
-					var using = numbers[use];
-					number += using.toString() + " ";
-					numbers.splice(use, 1);
-				}
-				number = number.replace("0", "The Teams Are: ")
-				document.getElementById("Number").innerHTML = number;
-				numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-				number = 0;
-			}
+        }
+		if(calcsDone < 1000) {
+	        out.push(nums);
+	        out.push(numOn);
+		}
+        t = out;
+    }
+	console.log(out.join(""));
+}, 50);
 		</script>
     	</body>
 </html>
